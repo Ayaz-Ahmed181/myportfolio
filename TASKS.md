@@ -7,8 +7,8 @@
 - [x] Install `animejs`.
 
 ## Phase 2: Core Layout & Navigation
-- [ ] Build global layout wrapper (Navbar/HUD overlay, Footer).
-- [ ] Implement smooth scrolling and basic Anime.js page entry animations.
+- [x] Build global layout wrapper (Navbar/HUD overlay, Footer).
+- [x] Implement smooth scrolling and basic Anime.js page entry animations.
 - [ ] Ensure Recruiter Priority info is in the Navbar/Hero.
 
 ## Phase 3: Main Sections (Data-Driven)
