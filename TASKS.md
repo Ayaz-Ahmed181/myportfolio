@@ -12,7 +12,7 @@
 - [ ] Ensure Recruiter Priority info is in the Navbar/Hero.
 
 ## Phase 3: Main Sections (Data-Driven)
-- [ ] **BOOT / HERO:** Create landing sequence and quick links.
+- [x] **BOOT / HERO:** Create landing sequence and quick links.
 - [ ] **PLAYER PROFILE:** About section and stats.
 - [ ] **MISSIONS / PROJECTS:** Standard grid view of projects.
 - [ ] **WEB OF PROJECTS:** Interactive project visualization.

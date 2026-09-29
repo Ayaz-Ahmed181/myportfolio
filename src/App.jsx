@@ -1,15 +1,11 @@
 import React from 'react';
 import Layout from './components/Layout';
+import Hero from './components/Hero';
 
 function App() {
   return (
     <Layout>
-      <section id="boot" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-        <div>
-          <h1 style={{ fontSize: '3rem', margin: '0 0 1rem 0' }}>AYAZ.EXE</h1>
-          <p style={{ color: 'var(--text-secondary)' }}>Phase 2 — Structural Foundation</p>
-        </div>
-      </section>
+      <Hero />
       
       {/* Placeholders to verify smooth scrolling */}
       <section id="profile" style={{ minHeight: '100vh', padding: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}><h2>Profile</h2></section>
