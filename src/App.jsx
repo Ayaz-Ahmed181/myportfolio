@@ -5,9 +5,11 @@ import Missions from './components/Missions';
 import SectionDivider from './components/SectionDivider';
 import CrosshairCursor from './components/CrosshairCursor';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import { useScrollColor } from './hooks/useScrollColor';
 
 function App() {
   useScrollReveal();
+  useScrollColor();
   return (
     <>
       <CrosshairCursor />

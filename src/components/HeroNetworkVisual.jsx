@@ -47,8 +47,8 @@ const HeroNetworkVisual = () => {
           <circle cx="300" cy="300" r="2" />
         </g>
 
-        {/* Pulsing electric cyan signal dots */}
-        <g fill="#38BDF8">
+        {/* Pulsing signal dots */}
+        <g fill="#C4B5FD">
           <circle cx="100" cy="100" r="4" className={styles.pulseNode} style={{ animationDelay: '0s' }} />
           <circle cx="300" cy="100" r="4" className={styles.pulseNode} style={{ animationDelay: '1s' }} />
           <circle cx="200" cy="200" r="5" className={styles.pulseNode} style={{ animationDelay: '0.5s' }} />

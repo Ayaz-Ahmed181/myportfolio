@@ -1,33 +1,39 @@
 :root {
-  --font-display: 'Rajdhani', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Antonio', sans-serif;
+  --font-body: 'Lora', serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --bg-base: #060B19;
-  --bg-surface: rgba(255, 255, 255, 0.06);
-  --bg-surface-hover: rgba(255, 255, 255, 0.1);
-  --border-subtle: rgba(255, 255, 255, 0.16);
-  --border-focus: rgba(255, 255, 255, 0.35);
+
+  --bg-base: #0C0B0E;
   --text-primary: #FFFFFF;
-  --text-secondary: #93C5FD;
-  --text-muted: #64748B;
-  --accent-primary: #38BDF8;
-  --accent-glow: rgba(59, 130, 246, 0.35);
+  --text-body: #E5E7EB;
+  --text-muted: #9CA3AF;
+  --dynamic-heading-color: #FFD1DC;
+
+  --btn-primary-bg: #C4B5FD;
+  --btn-primary-text: #1A162B;
+  --btn-secondary-bg: rgba(255, 255, 255, 0.05);
+  --btn-secondary-border: rgba(255, 255, 255, 0.18);
+  --btn-secondary-text: #FFFFFF;
 
   /* Legacy & semantic aliases */
-  --bg-primary: #060B19;
-  --bg-secondary: #0A1128;
-  --surface: var(--bg-surface);
-  --surface-hover: var(--bg-surface-hover);
-  --border-light: var(--border-subtle);
-  --border-strong: var(--border-focus);
-  --accent-red: var(--accent-primary);
+  --bg-primary: #0C0B0E;
+  --bg-secondary: #0E0D12;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --border-subtle: rgba(255, 255, 255, 0.18);
+  --accent-primary: var(--btn-primary-bg);
+  --accent-red: var(--dynamic-heading-color);
+  --text-secondary: var(--dynamic-heading-color);
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at 50% 15%, #1D4ED8 0%, #0F204E 40%, #060B19 100%) fixed;
-  color: var(--text-primary);
+  background-color: var(--bg-base);
+  background: var(--bg-base);
+  color: var(--text-body);
   font-family: var(--font-body);
   overflow-x: hidden;
   min-height: 100vh;
@@ -35,6 +41,21 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--dynamic-heading-color);
+  transition: color 0.4s ease;
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-body);
 }
 
 /* Accessibility */

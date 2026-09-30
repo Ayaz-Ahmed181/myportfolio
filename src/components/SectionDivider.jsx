@@ -41,8 +41,8 @@ const SectionDivider = ({ topLabel = 'SYSTEM ONLINE', bottomLabel = 'MISSIONS //
       <div className={styles.lineWrapper}>
         <svg viewBox="0 0 2 100" preserveAspectRatio="none" className={styles.svgLine}>
           <line x1="1" y1="0" x2="1" y2="100" stroke="rgba(255, 255, 255, 0.1)" strokeWidth="2" />
-          <line x1="1" y1="0" x2="1" y2="100" stroke="var(--accent-primary, #38BDF8)" strokeWidth="2" 
-                ref={lineRef} pathLength="100" />
+          <line x1="1" y1="0" x2="1" y2="100" stroke="var(--dynamic-heading-color, #FFD1DC)" strokeWidth="2" 
+                ref={lineRef} pathLength="100" style={{ transition: 'stroke 0.4s ease' }} />
         </svg>
       </div>
       <div className={`${styles.label} reveal-on-scroll`}>{bottomLabel}</div>

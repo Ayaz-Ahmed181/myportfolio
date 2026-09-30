@@ -46,10 +46,10 @@
 .centerDot {
   width: 2px;
   height: 2px;
-  background-color: var(--accent-primary, #38BDF8);
+  background-color: var(--btn-primary-bg, #C4B5FD);
   border-radius: 50%;
   position: absolute;
-  box-shadow: 0 0 6px rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 8px rgba(196, 181, 253, 0.9);
 }
 
 .line {
@@ -63,7 +63,7 @@
 }
 
 .hovering .line {
-  background-color: var(--accent-primary, #38BDF8);
+  background-color: var(--btn-primary-bg, #C4B5FD);
 }
 
 /* Top line */
