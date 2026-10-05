@@ -5,11 +5,11 @@
   width: 0;
   height: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 9999999;
   transform: translate(var(--mouse-x, -100px), var(--mouse-y, -100px));
-  display: none; /* hidden by default, shown via media query below */
+  display: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .visible {
@@ -17,9 +17,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  :global(body), :global(a), :global(button) { cursor: none !important; }
   .crosshair {
-    display: block; /* Only render visually on desktop */
+    display: block;
+  }
+  :global(body), :global(a), :global(button) {
+    cursor: none !important;
   }
 }
 
@@ -32,80 +34,84 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.reducedMotion .reticle {
-  transition: none !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hovering .reticle {
-  transform: scale(1.2);
+  transform: scale(1.35);
 }
 
+/* Bright luminous center point */
 .centerDot {
-  width: 2px;
-  height: 2px;
-  background-color: var(--btn-primary-bg, #C4B5FD);
+  width: 4px;
+  height: 4px;
+  background-color: #FFFFFF;
   border-radius: 50%;
   position: absolute;
-  box-shadow: 0 0 8px rgba(196, 181, 253, 0.9);
+  box-shadow: 0 0 6px #FFFFFF, 0 0 10px rgba(207, 207, 207, 0.8);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.hovering .centerDot {
+  background-color: #A855F7;
+  box-shadow: 0 0 10px #A855F7, 0 0 18px rgba(127, 73, 180, 0.9);
+}
+
+/* Bright high-contrast reticle brackets */
 .line {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.35);
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.reducedMotion .line {
-  transition: none !important;
+  background-color: #CFCFCF;
+  box-shadow: 0 0 4px rgba(207, 207, 207, 0.6);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hovering .line {
-  background-color: var(--btn-primary-bg, #C4B5FD);
+  background-color: #7F49B4;
+  box-shadow: 0 0 8px rgba(127, 73, 180, 0.85);
 }
 
-/* Top line */
 .top {
-  width: 1px;
-  height: 6px;
+  width: 2px;
+  height: 7px;
   top: 0;
   transform: translateY(-2px);
 }
 .hovering .top {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
-/* Bottom line */
 .bottom {
-  width: 1px;
-  height: 6px;
+  width: 2px;
+  height: 7px;
   bottom: 0;
   transform: translateY(2px);
 }
 .hovering .bottom {
-  transform: translateY(4px);
+  transform: translateY(5px);
 }
 
-/* Left line */
 .left {
-  width: 6px;
-  height: 1px;
+  width: 7px;
+  height: 2px;
   left: 0;
   transform: translateX(-2px);
 }
 .hovering .left {
-  transform: translateX(-4px);
+  transform: translateX(-5px);
 }
 
-/* Right line */
 .right {
-  width: 6px;
-  height: 1px;
+  width: 7px;
+  height: 2px;
   right: 0;
   transform: translateX(2px);
 }
 .hovering .right {
-  transform: translateX(4px);
+  transform: translateX(5px);
+}
+
+.reducedMotion .reticle,
+.reducedMotion .line,
+.reducedMotion .centerDot {
+  transition: none !important;
 }

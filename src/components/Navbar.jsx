@@ -1,36 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 
-const Navbar = () => {
+const NAV_LINKS = [
+  { id: 'hero', label: '// ORIGIN' },
+  { id: 'missions', label: '// MISSIONS' },
+  { id: 'training', label: '// ARSENAL' },
+  { id: 'contact', label: '// UPLINK' },
+];
+
+const Navbar = ({ onEasterEgg }) => {
+  const [activeSection, setActiveSection] = useState('hero');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200;
+      for (let i = NAV_LINKS.length - 1; i >= 0; i--) {
+        const section = document.getElementById(NAV_LINKS[i].id);
+        if (section && section.offsetTop <= scrollPos) {
+          setActiveSection(NAV_LINKS[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className={styles.navbar}>
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <a href="#boot" aria-label="Home">
-            AYAZ<span className={styles.accent}>.EXE</span>
-          </a>
-        </div>
-        
-        <nav className={styles.navLinks} aria-label="Main Navigation">
-          <ul>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#missions">Missions</a></li>
-            <li><a href="#training">Training</a></li>
-            <li><a href="#loadout">Loadout</a></li>
-            <li><a href="#discoveries">Discoveries</a></li>
-            <li><a href="#arcade">Arcade</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        
-        <div className={styles.actions}>
-          <a href="#" className={styles.resumeBtn} aria-label="Download Resume (TODO)">
-            <span className={styles.bracket}>[</span>
-            RESUME
-            <span className={styles.bracket}>]</span>
-          </a>
-        </div>
+    <header className={styles.navHeader} aria-label="Main Tactical Navigation">
+      {/* Brand Pill */}
+      <div className={`${styles.ovalBar} ${styles.brandPill}`}>
+        <a href="#hero" className={styles.brandLink}>
+          <span className={styles.brandText}>AYAZ.EXE</span>
+        </a>
+        <button
+          type="button"
+          onClick={onEasterEgg}
+          className={styles.statusBtn}
+          title="AYAZ.EXE System Telemetry // Click for status"
+          aria-label="System Telemetry"
+        >
+          <span className={styles.sysStatus} />
+        </button>
       </div>
+
+      {/* Center Nav Capsule Bar */}
+      <nav className={`${styles.ovalBar} ${styles.linksPill}`}>
+        {NAV_LINKS.map((link) => (
+          <a
+            key={link.id}
+            href={`#${link.id}`}
+            className={`${styles.navLink} ${
+              activeSection === link.id ? styles.activeLink : ''
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 };

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './Hero.module.css';
-import HeroNetworkVisual from './HeroNetworkVisual';
 import { animate, stagger } from 'animejs';
 
 const Hero = () => {
   const containerRef = useRef(null);
   const nameRef = useRef(null);
   const roleRef = useRef(null);
+  const watermarkRef = useRef(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -19,6 +19,16 @@ const Hero = () => {
       if (subElements) subElements.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
       return;
     }
+
+    // Watermark gentle parallax
+    let rafId = null;
+    const onScroll = () => {
+      if (watermarkRef.current) {
+        const offset = window.scrollY * 0.12;
+        watermarkRef.current.style.transform = `translate3d(0, ${offset}px, 0)`;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     // Initial state for secondary elements
     if (subElements) {
@@ -49,11 +59,16 @@ const Hero = () => {
         delay: stagger(50, { start: 1350 })
       });
     }
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
-    <section id="boot" className={styles.heroSection}>
-      <div className={styles.watermark} aria-hidden="true">
+    <section id="hero" className={styles.heroSection}>
+      <div ref={watermarkRef} className={styles.watermark} aria-hidden="true">
         AYAZ AHMED
       </div>
       <div className={styles.container} ref={containerRef}>
@@ -118,7 +133,29 @@ const Hero = () => {
         </div>
 
         <div className={styles.visualWrapper}>
-          <HeroNetworkVisual />
+          {/* Profile / Graphic Frame with Die-Cut Sticker */}
+          <div className={`${styles.imageFrameContainer} hero-anim`}>
+            <div className={styles.imageCard}>
+              {/* Existing Profile Image or Graphic */}
+              <img
+                src="/assets/profile.png"
+                alt="Ayaz Profile"
+                className={styles.profileImage}
+              />
+              <div className={styles.imageScanline} />
+            </div>
+
+            {/* Retro PC "DO EPIC SHIT" Die-Cut Sticker */}
+            <div className={styles.stickerWrapper} title="System Status: Loading Epic Code">
+              <img
+                src="/assets/sticker-retro-pc.png"
+                alt="Retro PC DO EPIC SHIT Sticker"
+                className={styles.retroSticker}
+                loading="eager"
+              />
+              <span className={styles.stickerHudPing} aria-hidden="true" />
+            </div>
+          </div>
         </div>
         
       </div>

@@ -9,15 +9,15 @@ export const useScrollColor = () => {
       if (scrollHeight <= 0) return;
       const progress = Math.min(Math.max(window.scrollY / scrollHeight, 0), 1);
 
-      let color = '#FFD1DC';
+      let color = '#F2F3F5';
       if (progress < 0.25) {
-        color = '#FFD1DC'; // 0.0 - 0.25 (Hero): Blush Pink
+        color = '#FFFFFF'; // Hero: Crisp White
       } else if (progress < 0.50) {
-        color = '#D8B4FE'; // 0.25 - 0.50 (Missions): Soft Lilac
+        color = '#F2F3F5'; // Missions: High-contrast Off-White
       } else if (progress < 0.75) {
-        color = '#BAE6FD'; // 0.50 - 0.75 (Stats/Loadout): Icy Cyan
+        color = '#E5E7EB'; // Training / Arcade: Clean Slate White
       } else {
-        color = '#FEE2E2'; // 0.75 - 1.00 (Contact/Footer): Warm Pearl Rose
+        color = '#F2F3F5'; // Contact/Footer: High-contrast Off-White
       }
 
       document.documentElement.style.setProperty('--dynamic-heading-color', color);

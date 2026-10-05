@@ -1,0 +1,328 @@
+.webAimSection {
+  position: relative;
+  width: 100%;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.2rem, 4vw, 3.5rem) 2.5rem clamp(1.2rem, 4vw, 3.5rem);
+  box-sizing: border-box;
+  background: transparent;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.headerBlock {
+  margin-bottom: 2rem;
+}
+
+.telemetryTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: #7F49B4;
+  margin-bottom: 0.8rem;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7F49B4;
+  box-shadow: 0 0 8px #7F49B4;
+}
+
+.title {
+  font-family: var(--font-display, 'Black Ops One', sans-serif);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  letter-spacing: 0.05em;
+  color: #CFCFCF;
+  margin: 0 0 0.8rem 0;
+  text-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.95),
+    0 0 10px rgba(127, 73, 180, 0.65),
+    0 0 30px rgba(127, 73, 180, 0.25);
+}
+
+.subtitle {
+  font-family: var(--font-body, 'Montserrat', sans-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #CFCFCF;
+  opacity: 0.85;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* Tactical Cabinet */
+.arenaCabinet {
+  background: rgba(14, 16, 22, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(207, 207, 207, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 1px rgba(207, 207, 207, 0.3),
+    inset 0 0 24px rgba(127, 73, 180, 0.12),
+    0 16px 45px rgba(0, 0, 0, 0.9);
+}
+
+.hudBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.6rem;
+  background: rgba(10, 12, 16, 0.85);
+  border-bottom: 1px solid rgba(207, 207, 207, 0.12);
+}
+
+.metricGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metricLabel {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #7F49B4;
+  letter-spacing: 0.08em;
+}
+
+.metricValue {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.streakValue {
+  font-family: var(--font-display, 'Black Ops One', sans-serif);
+  font-size: 1.3rem;
+  color: #00F0FF;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+}
+
+.timerValue {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FF3344;
+}
+
+/* Canvas Viewport */
+.canvasContainer {
+  position: relative;
+  width: 100%;
+  cursor: crosshair;
+}
+
+.canvasStage {
+  width: 100%;
+  height: 520px;
+  display: block;
+}
+
+/* Modals & Overlays */
+.modalOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 10, 14, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  z-index: 20;
+}
+
+.launcherCard,
+.reportCard {
+  background: rgba(18, 20, 28, 0.95);
+  border: 1px solid rgba(127, 73, 180, 0.6);
+  border-radius: 8px;
+  padding: 2.2rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    0 0 35px rgba(127, 73, 180, 0.35);
+  text-align: center;
+}
+
+.cardBadge {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7F49B4;
+  letter-spacing: 0.1em;
+}
+
+.cardTitle {
+  font-family: var(--font-display, 'Black Ops One', sans-serif);
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  margin: 0.4rem 0 0.8rem 0;
+}
+
+.cardDesc {
+  font-family: var(--font-body, 'Montserrat', sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #CFCFCF;
+  opacity: 0.85;
+  margin: 0 0 1.8rem 0;
+}
+
+.engageBtn {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: #7F49B4;
+  color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  padding: 0.85rem 1.8rem;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(127, 73, 180, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.engageBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(127, 73, 180, 0.95);
+}
+
+.exitBtn {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: rgba(20, 20, 24, 0.7);
+  color: #CFCFCF;
+  border: 1px solid rgba(207, 207, 207, 0.3);
+  border-radius: 4px;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exitBtn:hover {
+  color: #FFFFFF;
+  border-color: #7F49B4;
+}
+
+/* Report Dossier */
+.reportHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(207, 207, 207, 0.12);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.reportTitle {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7F49B4;
+}
+
+.rankPill {
+  font-family: var(--font-display, 'Black Ops One', sans-serif);
+  font-size: 1.3rem;
+  color: #00F0FF;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  text-align: left;
+}
+
+.statBox {
+  background: rgba(10, 12, 16, 0.7);
+  border: 1px solid rgba(207, 207, 207, 0.1);
+  padding: 0.8rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.statLabel {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.65rem;
+  color: #7F49B4;
+  font-weight: 700;
+}
+
+.statVal {
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Legend */
+.legendBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.8rem 1.6rem;
+  background: rgba(10, 12, 16, 0.85);
+  border-top: 1px solid rgba(207, 207, 207, 0.1);
+  font-family: var(--font-tech, 'Space Grotesk', monospace);
+  font-size: 0.72rem;
+  color: #CFCFCF;
+}
+
+.targetLegend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.legendDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.shooterReady {
+  color: #7F49B4;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .canvasStage {
+    height: 420px;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}

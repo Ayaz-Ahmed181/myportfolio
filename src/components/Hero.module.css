@@ -3,17 +3,17 @@
   display: flex;
   align-items: center;
   position: relative;
-  padding: 2rem;
+  padding: 6rem 2.5rem 3.5rem;
   overflow: hidden;
   background-color: transparent;
 }
 
 .watermark {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: clamp(6rem, 18vw, 15rem);
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.05);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
   position: absolute;
   top: 15%;
   left: 2%;
@@ -27,14 +27,15 @@
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1350px;
   width: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.5rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 1024px) {
@@ -63,6 +64,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 2;
   width: 100%;
 }
 
@@ -74,7 +77,7 @@
 }
 
 .systemLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
   font-weight: 500;
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -89,9 +92,9 @@
   display: block;
   width: 8px;
   height: 8px;
-  background-color: var(--dynamic-heading-color);
+  background-color: var(--dynamic-font-color);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--dynamic-heading-color);
+  box-shadow: 0 0 10px var(--dynamic-font-glow);
   transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -102,56 +105,76 @@
 }
 
 .name {
-  font-family: var(--font-display);
-  font-size: clamp(3.8rem, 9.5vw, 7.5rem);
-  font-weight: 700;
+  font-family: var(--font-display, 'Black Ops One', sans-serif);
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  font-weight: 400;
   margin: 0;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--dynamic-heading-color);
-  transition: color 0.4s ease;
+  color: var(--dynamic-font-color, #CFCFCF);
+  
+  /* Layered 3D tactical bevel & radiance */
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.8),
+    0 4px 12px rgba(0, 0, 0, 0.95),
+    0 0 16px rgba(127, 73, 180, 0.75),
+    0 0 40px rgba(127, 73, 180, 0.4),
+    0 0 80px rgba(127, 73, 180, 0.2);
+  transition: color 0.15s ease, text-shadow 0.15s ease;
 }
 
 .role {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3.5vw, 2.6rem);
+  font-family: var(--font-body, 'Montserrat', sans-serif);
+  font-size: clamp(1.1rem, 2.3vw, 1.6rem);
   font-weight: 700;
   margin: 0;
-  color: var(--dynamic-heading-color);
-  opacity: 0.85;
-  letter-spacing: 0.03em;
+  color: var(--color-violet, #7F49B4);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: color 0.4s ease;
+  text-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.9),
+    0 0 14px rgba(127, 73, 180, 0.5);
+  transition: color 0.15s ease, text-shadow 0.15s ease;
 }
 
 .metadata {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--dynamic-heading-color);
-  letter-spacing: 0.05em;
   display: inline-flex;
-  gap: 0.5rem;
   align-items: center;
-  border-left: 2px solid var(--dynamic-heading-color);
-  padding-left: 1rem;
-  transition: color 0.4s ease, border-color 0.4s ease;
+  color: var(--font-color-silver);
+  border: 1px solid var(--font-color-violet);
+  background: rgba(127, 73, 180, 0.12);
+  box-shadow: 0 0 15px rgba(127, 73, 180, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  width: fit-content;
+  gap: 0.3rem;
+}
+
+.metaDataText {
+  color: var(--font-color-violet);
+  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
 }
 
 .bracket {
-  font-family: var(--font-mono);
-  color: var(--dynamic-heading-color);
-  transition: color 0.4s ease;
+  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
+  color: rgba(127, 73, 180, 0.7);
+  font-weight: 700;
 }
 
 .description {
-  max-width: 600px;
+  max-width: 580px;
   font-family: var(--font-body);
+  font-weight: 400;
   font-size: 1.15rem;
   line-height: 1.6;
-  color: var(--text-body);
-  margin: 0.5rem 0 1rem;
+  color: var(--font-color-silver);
+  margin: 0.25rem 0 0.75rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 .ctas {
@@ -161,57 +184,62 @@
   flex-wrap: wrap;
 }
 
+/* Primary CTA: Violet background with dark #141414 text for maximum contrast */
 .primaryCta {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.6rem;
-  background: var(--btn-primary-bg);
-  color: var(--btn-primary-text);
-  font-family: var(--font-mono);
-  font-weight: 500;
+  padding: 0.85rem 1.8rem;
+  background: var(--font-color-violet);
+  color: var(--font-color-dark) !important;
+  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
+  font-weight: 700;
   font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   border-radius: 9999px;
-  border: none;
-  box-shadow: 0 4px 20px rgba(196, 181, 253, 0.25);
-  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  box-shadow: 0 0 20px rgba(127, 73, 180, 0.5);
+  transition: all 0.25s ease;
   z-index: 1;
   overflow: hidden;
 }
 
 .primaryCta:hover,
 .primaryCta:focus {
+  background: #9258ce;
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(196, 181, 253, 0.4);
+  box-shadow: 0 0 30px rgba(127, 73, 180, 0.75);
 }
 
+/* Secondary CTA: Transparent background with silver #CFCFCF text */
 .secondaryCta {
-  color: var(--btn-secondary-text);
-  font-family: var(--font-mono);
-  font-weight: 500;
+  color: var(--font-color-silver) !important;
+  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
+  font-weight: 600;
   font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-decoration: none;
-  padding: 0.8rem 1.6rem;
-  border: 1px solid var(--btn-secondary-border);
-  background: var(--btn-secondary-bg);
-  backdrop-filter: blur(10px);
+  padding: 0.85rem 1.8rem;
+  border: 1px solid rgba(207, 207, 207, 0.3);
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .secondaryCta:hover,
 .secondaryCta:focus {
-  color: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF !important;
+  border-color: rgba(207, 207, 207, 0.6);
+  background: rgba(127, 73, 180, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(127, 73, 180, 0.3);
 }
 
 .socials {
@@ -221,8 +249,8 @@
 }
 
 .socials a {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
+  color: var(--font-color-silver);
+  font-family: var(--font-tech, 'Space Grotesk', sans-serif);
   font-weight: 500;
   font-size: 0.8rem;
   text-decoration: none;
@@ -233,7 +261,7 @@
 
 .socials a:hover,
 .socials a:focus {
-  color: var(--dynamic-heading-color);
+  color: var(--font-color-violet);
 }
 
 .bgDecor {
@@ -244,5 +272,114 @@
   height: 100vh;
   pointer-events: none;
   z-index: 1;
+}
+
+/* Container enclosing the avatar/image */
+.imageFrameContainer {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* Image glass container */
+.imageCard {
+  position: relative;
+  width: clamp(260px, 30vw, 360px);
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(20, 20, 20, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(207, 207, 207, 0.2);
+  box-shadow:
+    inset 0 1px 1px rgba(207, 207, 207, 0.35),
+    0 16px 40px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(127, 73, 180, 0.2);
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imageScanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+/* Floating Sticker Wrapper */
+.stickerWrapper {
+  position: absolute;
+  bottom: -22px;
+  right: -24px;
+  width: clamp(100px, 12vw, 135px);
+  cursor: pointer;
+  z-index: 25;
+  transform: rotate(6deg);
+  transform-origin: center center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.8))
+          drop-shadow(0 0 10px rgba(127, 73, 180, 0.35));
+}
+
+.retroSticker {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+  pointer-events: auto;
+}
+
+/* Tactical Ping Badge atop the sticker */
+.stickerHudPing {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 6px;
+  height: 6px;
+  background-color: #7F49B4;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #7F49B4, 0 0 14px #7F49B4;
+  animation: pingPulse 2s infinite ease-in-out;
+}
+
+@keyframes pingPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.5;
+  }
+}
+
+/* Hover dynamics: straightens, floats up, shines */
+.stickerWrapper:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.06);
+  filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.95))
+          drop-shadow(0 0 18px rgba(127, 73, 180, 0.65));
+}
+
+/* Responsive adjustment for mobile viewports */
+@media (max-width: 640px) {
+  .stickerWrapper {
+    bottom: -16px;
+    right: -14px;
+    width: 95px;
+  }
 }
 

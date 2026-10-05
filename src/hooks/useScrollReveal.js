@@ -1,41 +1,60 @@
 import { useEffect } from 'react';
-import { animate, stagger } from 'animejs';
+import { animate } from 'animejs';
 
+/**
+ * useScrollReveal
+ * Observes elements with the `.reveal-on-scroll` class and reveals them
+ * with a subtle, professional fade-and-translate animation as they enter viewport.
+ * Strictly respects prefers-reduced-motion and cleans up observers.
+ */
 export const useScrollReveal = () => {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const elements = document.querySelectorAll('.reveal-on-scroll');
+    const elements = Array.from(document.querySelectorAll('.reveal-on-scroll'));
 
-    if (!prefersReducedMotion) {
-      elements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
+    if (elements.length === 0) return;
+
+    if (prefersReducedMotion) {
+      elements.forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
       });
+      return;
     }
 
-    const observer = new IntersectionObserver((entries, obs) => {
-      const intersecting = entries.filter(e => e.isIntersecting).map(e => e.target);
-      if (intersecting.length > 0) {
-        if (prefersReducedMotion) {
-          intersecting.forEach(el => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-          });
-        } else {
-          animate(intersecting, {
-            opacity: [0, 1],
-            translateY: [30, 0],
-            duration: 700,
-            ease: 'outExpo',
-            delay: stagger(80)
-          });
-        }
-        intersecting.forEach(el => obs.unobserve(el));
+    // Prepare initial state
+    elements.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'none';
+    });
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+            obs.unobserve(target);
+
+            animate(target, {
+              opacity: [0, 1],
+              translateY: [22, 0],
+              duration: 550,
+              ease: 'outCubic',
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px',
       }
-    }, { threshold: 0.15 });
+    );
 
-    elements.forEach(el => observer.observe(el));
+    elements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 };

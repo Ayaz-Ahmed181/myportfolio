@@ -1,54 +1,108 @@
 :root {
-  --font-display: 'Antonio', sans-serif;
-  --font-body: 'Lora', serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --color-violet: #7F49B4;
+  --color-dark: #141414;
+  --color-silver: #CFCFCF;
 
-  --bg-base: #0C0B0E;
-  --text-primary: #FFFFFF;
-  --text-body: #E5E7EB;
-  --text-muted: #9CA3AF;
-  --dynamic-heading-color: #FFD1DC;
+  /* Compound text shadow tokens */
+  --glow-tight: 0 0 12px rgba(127, 73, 180, 0.7);
+  --glow-diffuse: 0 0 32px rgba(127, 73, 180, 0.35);
+  --shadow-occlusion: 0 3px 10px rgba(0, 0, 0, 0.95);
 
-  --btn-primary-bg: #C4B5FD;
-  --btn-primary-text: #1A162B;
-  --btn-secondary-bg: rgba(255, 255, 255, 0.05);
-  --btn-secondary-border: rgba(255, 255, 255, 0.18);
-  --btn-secondary-text: #FFFFFF;
+  /* Palette font tokens */
+  --font-color-violet: #7F49B4;
+  --font-color-dark: #141414;
+  --font-color-silver: #CFCFCF;
 
-  /* Legacy & semantic aliases */
-  --bg-primary: #0C0B0E;
-  --bg-secondary: #0E0D12;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-hover: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.12);
-  --border-strong: rgba(255, 255, 255, 0.22);
-  --border-subtle: rgba(255, 255, 255, 0.18);
-  --accent-primary: var(--btn-primary-bg);
-  --accent-red: var(--dynamic-heading-color);
-  --text-secondary: var(--dynamic-heading-color);
+  /* Dynamic scroll-interpolated heading colors */
+  --dynamic-font-color: #CFCFCF;
+  --dynamic-font-glow: rgba(207, 207, 207, 0.4);
+
+  /* Tactical display headers */
+  --font-display: 'Black Ops One', system-ui;
+
+  /* Body copy, narrative text, form inputs */
+  --font-body: 'Montserrat', sans-serif;
+
+  /* HUD telemetry, badges, metrics, and technical labels */
+  --font-tech: 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  /* Base text default */
+  --text-primary: #CFCFCF;
+  --text-secondary: #7F49B4;
+  --text-muted: rgba(207, 207, 207, 0.65);
+
+  /* Surface & UI bindings */
+  --bg-base: #141414;
+  --bg-deep: #141414;
+  --bg-surface: rgba(20, 20, 20, 0.75);
+  --bg-surface-hover: rgba(127, 73, 180, 0.18);
+  --border-subtle: rgba(207, 207, 207, 0.18);
+  --border-glow: rgba(127, 73, 180, 0.5);
+  --accent-red: #7F49B4;
+  --pin-font-color: var(--dynamic-font-color);
+
+  --btn-primary-bg: #7F49B4;
+  --btn-primary-text: #141414;
+  --btn-secondary-bg: rgba(20, 20, 20, 0.6);
+  --btn-secondary-border: rgba(207, 207, 207, 0.3);
+  --btn-secondary-text: #CFCFCF;
+
+  --text-bright: #CFCFCF;
+  --text-body: #CFCFCF;
+  --text-sub: rgba(207, 207, 207, 0.7);
+  --accent-primary: #7F49B4;
+}
+
+html, body, #root, main {
+  background: transparent !important;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--bg-base);
-  background: var(--bg-base);
-  color: var(--text-body);
+  min-height: 100vh;
+  /* Background handled by ScrollBackground */
+  color: var(--text-primary);
   font-family: var(--font-body);
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
+/* Base heading styles */
+h1, h2, h3, .display-heading {
+  font-family: var(--font-display, 'Black Ops One', sans-serif);
+  letter-spacing: 0.05em;
+  color: var(--dynamic-font-color, var(--color-silver));
+  
+  /* Multi-tier chromatic shadow */
+  text-shadow: 
+    var(--shadow-occlusion),
+    0 0 10px rgba(127, 73, 180, 0.65),
+    0 0 28px rgba(127, 73, 180, 0.3),
+    0 0 60px rgba(127, 73, 180, 0.15);
+
+  transition: color 0.15s ease-out, text-shadow 0.2s ease-out;
+}
+
+/* Subtle tactical sub-label glow */
+.hud-label, .meta-text {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(207, 207, 207, 0.25);
+}
+
+h4, h5, h6 {
+  font-family: var(--font-display, 'Black Ops One', sans-serif);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--dynamic-heading-color);
-  transition: color 0.4s ease;
+  letter-spacing: 0.04em;
+  color: var(--dynamic-font-color, var(--color-silver));
+  text-shadow: 
+    var(--shadow-occlusion),
+    0 0 10px rgba(127, 73, 180, 0.5),
+    0 0 25px rgba(127, 73, 180, 0.2);
+  transition: color 0.15s ease-out, text-shadow 0.2s ease-out;
 }
 
 p {
@@ -79,8 +133,3 @@ p {
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
-}

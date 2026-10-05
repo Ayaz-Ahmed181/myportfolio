@@ -1,0 +1,27 @@
+:root {
+  /* Tactical display headers */
+  --font-display: 'Black Ops One', system-ui;
+
+  /* Body copy, narrative text, form inputs */
+  --font-body: 'Montserrat', sans-serif;
+
+  /* HUD telemetry, badges, metrics, and technical labels */
+  --font-tech: 'Space Grotesk', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  color: #CFCFCF;
+  background-color: #07090C;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base heading defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}

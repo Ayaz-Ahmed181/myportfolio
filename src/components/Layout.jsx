@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 import Footer from './Footer';
 import styles from './Layout.module.css';
 
@@ -10,7 +9,6 @@ const Layout = ({ children }) => {
       <div className={styles.bgGrid}></div>
       <div className={styles.bgGlow}></div>
       
-      <Navbar />
       <main className={styles.mainContent}>
         {children}
       </main>
